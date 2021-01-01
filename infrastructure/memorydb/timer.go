@@ -20,15 +20,12 @@ func NewMockTimerRepository() repository.TimerRepository {
 
 func (repository *MockTimerRepository) Create(timer model.Timer) error {
 	repository.timers = append(repository.timers, timer)
-	for i, timer := range repository.timers {
-		fmt.Printf("%d: %+v\n", i, timer)
-	}
 	return nil
 }
 
 func (repository *MockTimerRepository) Update(timer model.Timer) error {
 	for i, t := range repository.timers {
-		if t.Id == t.Id {
+		if t.Id == timer.Id {
 			repository.timers[i] = timer
 		}
 	}
